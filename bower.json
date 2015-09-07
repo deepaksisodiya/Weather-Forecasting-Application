@@ -1,0 +1,19 @@
+{
+  "name": "Weather Forecasting Application",
+  "version": "0.0.0",
+  "authors": [
+    "Deepak <deepak.sisodiya@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angularjs": "~1.4.5",
+    "bootstrap": "~3.3.5"
+  }
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/angularjs/angular.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="app.js"></script>
+    <script src="directive.js"></script>
+    <script src="controller.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body ng-controller="weatherController">
+
+<div class="row">
+    <div class="col-sm-12">
+        <h2 class="center">{{ appName }}</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <form class="form-inline" role="form">
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="cityName" googleplace placeholder="Enter City Name">
+                </div>
+                <button class="btn btn-primary" ng-click="searchWeatherForCity()">Search</button>
+            </form>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</div>
+
+<br />
+
+<div class="row">
+    <div class="col-sm-12">
+        <span ng-repeat="cityName in cityNamesArray">
+            <div class="col-sm-2 cityNamesList">
+                {{ cityName }}
+                <span class="glyphicon glyphicon-remove" ng-click="removeCity(cityName)"></span>
+            </div>
+        </span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12" ng-repeat="weather in allCityNamesWeather">
+        <h3>{{ weather.city.name }}, {{ weather.city.country }}</h3>
+        <div class="col-sm-2" ng-repeat="list in weather.list">
+            <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <td>Pressure</td>
+                    <td>{{ list.pressure }}</td>
+                </tr>
+                <tr>
+                    <td>humidity</td>
+                    <td>{{ list.humidity }}%</td>
+                </tr>
+                <tr>
+                    <td>Wind speed</td>
+                    <td>{{ list.speed }} meter/sec</td>
+                </tr>
+                <tr>
+                    <td>Weather</td>
+                    <td>{{ list.weather[0].main }}</td>
+                </tr>
+                <tr>
+                    <td>Weather Condition</td>
+                    <td>{{ list.weather[0].description }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
